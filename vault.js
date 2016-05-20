@@ -1,12 +1,19 @@
 'use strict';
-module.exports = function() {
-  var vault = null;
+module.exports = function () {
+  var vault = {};
   return {
-    setValue: function (key, value) {
-      vault = value;
-    },
-    getValue: function (key) {
-      return vault;
-    }
+    setValue: setValue,
+    getValue: getValue
   };
+  function setValue (key, value) {
+    vault[key] = value;
+  }
+  function getValue (key) {
+    for (var prop in vault) {
+      if (prop === key) {
+        return vault[key];
+      }
+    }
+    return null;
+  }
 };

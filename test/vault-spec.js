@@ -6,6 +6,13 @@ describe('Vault', function() {
 
   var vault = require('../vault');
   var vaulted;
+  var myVault = vault();
+
+  myVault.setValue('name', 'Bob');
+  myVault.setValue('color', 'yellow');
+
+  console.log(myVault.getValue('name'));
+
 
   beforeEach(function() {
     vaulted = vault();
